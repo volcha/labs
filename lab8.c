@@ -6,7 +6,7 @@ int fib(int n) {
 
 int main () {
   int n;
-  while (scanf("%d",&n)) {
+  while (scanf("%d",&n)!=EOF) {
     printf("%d\n",fib(n));
   }
   return 0;
