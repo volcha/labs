@@ -1,0 +1,5 @@
+gcc lab101.c
+gcc lab102.c
+gcc lab103.c
+gcc lab104.c -g
+gdb a.out
