@@ -1,0 +1,3 @@
+gcc lab15.c
+./a.out < test.txt | diff answer.txt -&& echo "Lab №15 successfully complete"
+rm a.out
