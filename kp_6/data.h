@@ -3,22 +3,207 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define str(a) char a[20];
+#define __NAME__ "C/home/natalya/kp_6"
 
-#define info_school struct info_school
-#define FNP struct FNP
-typedef info_school
+#define info_stud struct info_student
+#define FNP_stud struct FNP_stud
+#define marks struct marks
+#define exam struct exam
+#define offset struct offset
+
+typedef info_stud
 {
-    FNP
+    FNP_stud
     {
         str(last_name);
         char first_name;
         char patronymic;
     }
-    full_name;
+    fnp_stud;
+
+    enum sex_stud
+    {
+        F_stud = 'F',
+        M_stud = 'M'
+    } sex_stud;
+
+    int group_num;
+
+    marks //будем считать, что это 2-й семестр Маёвника
+    {
+        offset
+        {
+            enum la // linear algebra
+            {
+                la_yes = 'y',
+                la_no = 'n'
+            } this_la;
+            enum el // english language
+            {
+                el_yes = 'y',
+                el_no = 'n'
+            } this_el;
+            enum lab
+            {
+                lab_yes = 'y',
+                lab_no = 'n'
+            } this_lab;
+        }
+        off;
+        exam
+        {
+            int ma; // mathematical analysis
+            int hi; // history
+            int dm; // discrete math
+            int cs; // computer science
+        }
+        ez;
+    }
+    mks;
+
+    info_stud *next;
+    info_stud *last;
+}
+inf;
+
+#define info_pc struct info_pc
+#define CPU struct CPU
+#define GPU struct GPU
+#define HDD struct HDD
+#define control struct control
+
+typedef info_pc
+{
+    str(last_name); //имя
+    CPU             //процессор
+    {
+        int count;
+        str(type);
+    }
+    proc;
+    int memory; //память
+    GPU         //видяха
+    {
+        enum type_gpu
+        {
+            built_in,
+            discrete,
+            AGP,
+            PCI
+        } typ;
+        int memory;
+    }
+    video;
+    HDD //винчестер
+    {
+        enum type_hdd
+        {
+            SCSI_IDE,
+            ATA_SATA
+        } typ;
+        int memory;
+        int count;
+    }
+    hdd;
+    control
+    { // контроллеры
+        int discrete;
+        int built_in;
+    }
+    ctrl;
+    str(OC);
+    info_pc *next;
+    info_pc *last;
+}
+pc;
+
+#define info_exam struct info_exam
+#define marks_exam struct marks_exam
+#define FNP_exam struct FNP_exam
+
+typedef info_exam
+{
+    FNP_exam
+    {
+        str(last_name); //
+        char first_name;
+        char patronymic;
+    }
+    fnp_exam;
+
+    enum sex_exam
+    {
+        F_exam = 'F',
+        M_exam = 'M'
+    } sex_exam;
+    int school_number;
+    enum medal
+    {
+        yes_medal = 'y',
+        no_medal = 'n'
+    } this_medal;
+    marks_exam
+    {
+        int math;
+        int rus;
+        int inf;
+        int phis;
+    }
+    mar_exam;
+    enum essay
+    {
+        yes_essay = 'y',
+        no_essay = 'n'
+    } this_essay;
+    info_exam *next;
+    info_exam *last;
+}
+ex;
+
+#define info_passenger struct info_passenger
+#define FNP_pass struct FNP_pass
+
+typedef info_passenger
+{
+    FNP_pass
+    {
+        str(last_name);
+        char first_name;
+        char patronymic;
+    }
+    fnp_pass;
+    int bags;
+    int mass;
+    str(point);
+    str(time);
+    enum transit
+    {
+        yes_pass = 'y',
+        no_pass = 'n'
+    } this_transit;
+    int children_count;
+    info_passenger *next;
+    info_passenger *last;
+}
+aero;
+
+#define info_school struct info_school
+#define FNP_sch struct FNP_sch
+
+typedef info_school
+{
+    FNP_sch
+    {
+        str(last_name);
+        char first_name;
+        char patronymic;
+    }
+    fnp_sch;
+
     enum sex
     {
-        F,
-        M
+        F_sch = 'F',
+        M_sch = 'M'
     } this_sex;
     int class_num;
     char lit_class;
@@ -30,6 +215,8 @@ typedef info_school
 }
 puple;
 
-#define select_type info_school
+
+#define select_type info_stud
+
 
 #endif
