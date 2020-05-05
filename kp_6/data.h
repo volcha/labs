@@ -2,8 +2,27 @@
 #define DATA_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <malloc.h>
 #define str(a) char a[20];
-#define __NAME__ "C/home/natalya/kp_6"
+#define __NAME__ "database"
+
+#define Cret(tmp, type)                 \
+    tmp = (type *)malloc(sizeof(type)); \
+    if (!tmp)                           \
+    {                                   \
+        printf("%s\n", "Out of meme");  \
+        return;                         \
+    }
+
+#define to_high(tmp)         \
+    if (tmp)                 \
+    {                        \
+        while (tmp->last)    \
+        {                    \
+            tmp = tmp->last; \
+        }                    \
+        writer(tmp);         \
+    }
 
 #define info_stud struct info_student
 #define FNP_stud struct FNP_stud
@@ -29,7 +48,7 @@ typedef info_stud
 
     int group_num;
 
-    marks //будем считать, что это 2-й семестр Маёвника
+    marks //будем считать, что это 2-й семестр МАИ
     {
         offset
         {
@@ -38,7 +57,7 @@ typedef info_stud
                 la_yes = 'y',
                 la_no = 'n'
             } this_la;
-            enum el // english language
+            enum el // english
             {
                 el_yes = 'y',
                 el_no = 'n'
@@ -215,8 +234,6 @@ typedef info_school
 }
 puple;
 
-
 #define select_type info_stud
-
 
 #endif

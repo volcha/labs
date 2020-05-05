@@ -3,15 +3,28 @@
 #include <errno.h>
 #include "../kp_6/data.h"
 
-void writer(select_type stru)//тип вводимой переменной
-{				 
-    FILE *base = fopen(__NAME__, "w+");//Открываем файл 
+void writer(select_type *stru)
+{
+    int size = sizeof(select_type);
+    if (!stru)
+    {
+        perror("Database is empty");
+        return;
+    }
+    FILE *base = fopen(__NAME__, "w");
     if (!base)
     {
-        perror("Can't open file");//Если не удалось открыть файл выводим ошибку и ломаем программу
-	return;
+        perror("Can't open file");
+        return;
     }
-	    fwrite(&stru, sizeof(stru), 1, base);//записываем 
+
+    while (stru->next)
+    {
+        fwrite(stru, size, 1, base);
+        stru = stru->next;
+    }
+    stru->next = NULL;
+    fwrite(stru, size, 1, base);
     fclose(base);
     return;
 }
