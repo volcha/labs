@@ -1,0 +1,7 @@
+gcc kp.c best.c output.c re_builder.c -o output.exe
+
+gcc enter.c writer.c re_builder.c -o enter.exe
+
+./enter.exe - ввод данных
+
+./output.exe -f - вывод базы данных

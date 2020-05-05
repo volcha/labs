@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
 
         info_stud *root_tmp = NULL;
         root_tmp = new;
-        //root_tmp = extract(root_tmp);
         printf("%s\n", "Welcome!");
         if (root_tmp)
         {
