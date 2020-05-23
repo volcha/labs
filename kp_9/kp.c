@@ -52,19 +52,24 @@ int main() {
                 printf("%4f  %s\n", table[i].key, table[i].string);
             }
             printf("\n");
-
-            for (int i = 1; i < size; i++)
-            {
-                int k = i;
-                while (k > 0 && table[k].key < table[k - 1].key)
-                {
-                    row f = table[k];
-                    table[k] = table[k - 1];
-                    table[k - 1] = f;
-                    k -= 1;
-                }
-            }
-
+	    for (int i = 1; i < size; i++) {
+		    int left = 0;
+		    int right = i;
+		    while (right >= left) {
+			    int medium = (right + left) / 2;
+			    if (table[i].key < table[medium].key) {
+				    right = medium - 1;
+			    }
+			    else {
+				    left = medium + 1;
+			    }
+		    }
+		    for (int j = i; j > left; j--) {
+			    row variable = table[j];
+			    table[j] = table[j - 1];
+			    table[j - 1] = variable;
+		    }
+	    }
             for (int i = 0; i < size; i++)
             {
                 printf("%4f  %s\n", table[i].key, table[i].string);
@@ -89,6 +94,6 @@ int main() {
         }
     }
 
-    printf("%s", "Goodbye!");
+    printf("%s\n", "Goodbye!");
     return 0;
 }
