@@ -16,6 +16,7 @@ typedef struct cell
     struct cell *last;
     struct cell *next;
     float value;
+    int next_index;
 } cell;
 
 cell *enter(cell *);
