@@ -1,0 +1,131 @@
+natalya@natalya-Ideapad-Z570:~/lab20$ cmp f1.txt f2.txt
+f1.txt f2.txt различаются: байт 1, строка 1
+
+cmp — сравнивает два файла и, если они различаются, сообщает о первом байте и строке, где было обнаружено различие.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ diff f1.txt f2.txt
+1c1
+0a1
+> C++ 
+2,3c3,4
+< How are you
+< Who knows
+---
+> I'm fine
+> No
+
+diff — утилита сравнения файлов, выводящая разницу между двумя файлами.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ head f1.txt
+Hello
+How are you
+Who knows
+
+head — утилита в UNIX и UNIX-подобных системах, выводящая первые n строк из файла, по умолчанию n равно 10
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ du f1.txt
+4	f1.txt
+
+du — стандартная Unix-программа для оценки занимаемого файлового пространства.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ comm f1.txt f2.txt
+	C++ 
+		Hello
+How are you
+	I'm fine
+	No
+Who knows
+
+comm — утилита unix, читает файл1 и файл2, которые должны быть предварительно лексически отсортированы, и генерирует вывод, состоящий из трёх колонок текста: строки, найденные только в файле файл1; строки, найденные только в файле файл2; и строки, общие для обоих файлов.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ tee f1.txt
+i don't know   
+i don't know
+i can do this
+i can do this
+you too
+you too
+
+tee — команда, выводит на экран, или же перенаправляет выходной материал команды и копирует его в файл или в переменную.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ sum f1.txt
+39639     1
+
+sum — вычисляет 16-ти битовую контрольную сумму каждого файла, указанного в качестве аргумента FILE.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ awk ' {print $1,$3} '
+Hello world
+Hello 
+hello new world
+hello world
+
+awk - это утилита для извлечения данных (выше выводит 1 и 3 столбцы)
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ file f1.txt
+f1.txt: ASCII text
+
+file — команда Unix, предназначенная для определения типа файла.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ df f1.txt
+Файл.система   1K-блоков Использовано Доступно Использовано% Cмонтировано в
+/dev/sda7       65661416      1220956 61061928            2% /home
+
+df — показывает список всех файловых систем по именам устройств, сообщает их размер, занятое и свободное пространство и точки монтирования.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ wc f1.txt f2.txt
+ 3  9 35 f1.txt
+ 4  5 23 f2.txt
+ 7 14 58 итого
+
+wc — утилита, выводящая число переводов строк, слов и байт для каждого указанного файла и итоговую строку, если было задано несколько файлов.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ touch f3.txt
+
+touch устанавливает время доступа и время модификации указанных файлов. Если файл не существует, он создается.
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ split f2.txt -n 3
+
+split — разбивает файл на указанное количество частей
+
+
+
+natalya@natalya-Ideapad-Z570:~/lab20$ cat f2.txt | tr 'o' 'e'
+C++ 
+Helle
+I'm fine
+Ne
+
+Команда меняет выбранные буквы на заданные
+
+natalya@natalya-Ideapad-Z570:~/lab20$ sort f3.txt
+affdn
+asfhjsvzdbdn
+bfsfbn
+fhmxb
+sadgsn
+
+Это утилита для вывода текстовых строк в определенном порядке.
